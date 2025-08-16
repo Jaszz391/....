@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Biodata Saya</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(270deg, #0ff, #f0f, #0f0, #ff0);
+      background-size: 800% 800%;
+      animation: neonBG 15s ease infinite;
+      font-family: 'Courier New', monospace;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    @keyframes neonBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(30, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    h1.fade-out {
+      animation: fadeOut 2s forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(1.2); }
+    }
+
+    .bio {
+      margin-top: 20px;
+      opacity: 0;
+      animation: floatIn 2s ease forwards;
+      animation-delay: 6s;
+      text-align: center;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bio p {
+      margin: 10px 0;
+      font-size: 1.2em;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    audio {
+      display: none; /* biar gak kelihatan playernya */
+    }
+  </style>
+</head>
+<body>
+  <h1 id="judul">Halo, Saya Jaszz!</h1>
+
+  <div class="bio">
+    <p><strong>Nama:</strong> Jaszz</p>
+    <p><strong>Umur:</strong> 20 Tahun</p>
+    <p><strong>Hobi:</strong> Coding & Musik</p>
+    <p><strong>Cita-cita:</strong> Fullstack Developer</p>
+  </div>
+
+  <!-- Musik latar -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/7g5t8x.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const judul = document.getElementById("judul");
+
+    // Saat animasi typing selesai, tambahkan fade out
+    judul.addEventListener("animationend", (e) => {
+      if (e.animationName === "typing") {
+        setTimeout(() => {
+          judul.classList.add("fade-out");
+        }, 1000);
+      }
+    });
+  </script>
+</body>
+</html>
